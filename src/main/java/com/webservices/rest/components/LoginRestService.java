@@ -18,8 +18,6 @@ import com.constants.LoginConstants;
 import com.constants.RestMethodConstants;
 import com.constants.RestPathConstants;
 import com.constants.ScopeConstants;
-import com.utils.LoginUtils;
-import com.utils.WebServiceUtils;
 import com.webservices.rest.AbstractRestWebservice;
 
 @Component
@@ -48,18 +46,24 @@ public class LoginRestService extends AbstractRestWebservice implements RestMeth
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
-	@Path(REST_METHOD_NAME_TO_LOGOUT)
+	@Path("/resetPassword")
+	@Consumes("application/x-www-form-urlencoded")
 	@POST
-	public void logout (
+	public String resetPassword (
+			@FormParam("userId") final String userId,
+			@FormParam("userType") final String userType,
 			@Context final HttpServletRequest request,
 			@Context final HttpServletResponse response
 	) throws Exception {
-		this.methodName = REST_METHOD_NAME_TO_LOGOUT;
-		doSecurity(request);
-		if (this.securityPassed) {
-			LoginUtils.logoutUserSession(request);
-			WebServiceUtils.redirectToPage("/login.html", request, response);
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		if("seek".equals(userId) && "admin".equals(userType)) {
+			restresponse.put("success", true);
+			restresponse.put("message", "Password reset successful");
+		} else {
+			restresponse.put("success", false);
+			restresponse.put("message", "Failed to reset password");
 		}
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
 	@Override
