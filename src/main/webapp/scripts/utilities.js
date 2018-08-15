@@ -1,3 +1,4 @@
+var server = 'http://localhost:8080'
 var ctxPath = '/seekmentore';
 
 commonErrorHandler = function(error) {
@@ -19,7 +20,7 @@ function decodeObjectFromJSON(json) {
 function callWebservice(url, data, success, failure, method, contentType) {
 	$('#response').html('');
 	$.ajax({
-        url			: ctxPath + url,
+        url			: server + ctxPath + url,
         type		: ((null != method) ? method : 'POST'),
         data		: data,
         contentType	: ((null != contentType) ? contentType : 'application/json'),
