@@ -10,6 +10,7 @@ import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,7 @@ import com.constants.LoginConstants;
 import com.constants.RestMethodConstants;
 import com.constants.RestPathConstants;
 import com.constants.ScopeConstants;
+import com.model.components.Enquiries;
 import com.webservices.rest.AbstractRestWebservice;
 
 @Component
@@ -63,6 +65,18 @@ public class LoginRestService extends AbstractRestWebservice implements RestMeth
 			restresponse.put("success", false);
 			restresponse.put("message", "Failed to reset password");
 		}
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path(REST_METHOD_NAME_TO_UPDATE_ENQUIRY_DETAILS)
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String updateEnquiryDetails (
+			final Enquiries enquiryObject,
+			@Context final HttpServletRequest request
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		System.out.println(enquiryObject.getEnquiryId());
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	

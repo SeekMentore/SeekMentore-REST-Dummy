@@ -9,7 +9,7 @@ function login() {
 			password	: 'unknown', 
 			userType	: 'admin'
 	}
-	callWebservice('/rest/login/validateCredential', failuredata, null, null, null, 'application/x-www-form-urlencoded');
+	callWebservice('/rest/login/validateCredential', successdata, null, null, null, 'application/x-www-form-urlencoded');
 }
 
 function resetPassword() {
@@ -35,4 +35,11 @@ function getErrorDetails() {
 			errorCode		: '600'
 	}
 	callWebservice('/rest/commons/getErrorDetails', dataUnknown, null, null, null, 'application/x-www-form-urlencoded');
+}
+
+function updateEnquiryDetails() {
+	var form = {
+			enquiryId					: 2
+		};
+	callWebservice('/rest/login/updateEnquiryDetails', encodeObjectAsJSON(form));
 }
