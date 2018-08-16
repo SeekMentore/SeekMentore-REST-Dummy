@@ -68,7 +68,7 @@ public class LoginRestService extends AbstractRestWebservice implements RestMeth
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
-	@Path(REST_METHOD_NAME_TO_UPDATE_ENQUIRY_DETAILS)
+	@Path("/checkApplicationJSONrestMapping")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@POST
 	public String updateEnquiryDetails (
@@ -76,7 +76,7 @@ public class LoginRestService extends AbstractRestWebservice implements RestMeth
 			@Context final HttpServletRequest request
 	) throws Exception {
 		Map<String, Object> restresponse = new HashMap<String, Object>();
-		System.out.println(enquiryObject.getEnquiryId());
+		restresponse.put("enteredValue", enquiryObject.getWhoActed());
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
