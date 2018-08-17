@@ -34,15 +34,24 @@ public class CommonsRestService extends AbstractRestWebservice implements RestMe
 			@Context final HttpServletResponse response
 	) throws Exception {
 		Map<String, Object> restresponse = new HashMap<String, Object>();
-		if("404".equals(errorCode)) {
-			restresponse.put("errorImageSrc", "/images/error/404.jpg");
-			restresponse.put("errorText", "404 Error");
-		} else if("500".equals(errorCode)) {
-			restresponse.put("errorImageSrc", "/images/error/500.jpg");
-			restresponse.put("errorText", "500 Error");
+		if("101".equals(errorCode)) {
+			restresponse.put("errorImageSrc", "/images/error/101.png");
+			restresponse.put("errorText", "You are not allowed to access this page.");
+		} else if("102".equals(errorCode)) {
+			restresponse.put("errorImageSrc", "/images/error/102.jpg");
+			restresponse.put("errorText", "Page under maintnance.");
+		} else if("103".equals(errorCode)) {
+			restresponse.put("errorImageSrc", "/images/error/103.png");
+			restresponse.put("errorText", "Your user login has been blocked. Please contact administrator.");
+		} else if("104".equals(errorCode)) {
+			restresponse.put("errorImageSrc", "/images/error/104.jpg");
+			restresponse.put("errorText", "Site is under maintnance.");
+		} else if("105".equals(errorCode)) {
+			restresponse.put("errorImageSrc", "/images/error/105.jpg");
+			restresponse.put("errorText", "Server error occurred while processing your request.");
 		} else {
-			restresponse.put("errorImageSrc", "/images/error/unkown.jpg");
-			restresponse.put("errorText", "Unknown Error");
+			restresponse.put("errorImageSrc", "/images/error/106.gif");
+			restresponse.put("errorText", "Something went wrong!!!");
 		}
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
