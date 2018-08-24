@@ -19,7 +19,6 @@ import com.constants.LoginConstants;
 import com.constants.RestMethodConstants;
 import com.constants.RestPathConstants;
 import com.constants.ScopeConstants;
-import com.model.components.Enquiries;
 import com.webservices.rest.AbstractRestWebservice;
 
 @Component
@@ -68,15 +67,16 @@ public class LoginRestService extends AbstractRestWebservice implements RestMeth
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
-	@Path("/checkApplicationJSONrestMapping")
+	@Path("/logout")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@POST
-	public String updateEnquiryDetails (
-			final Enquiries enquiryObject,
-			@Context final HttpServletRequest request
+	public String logout (
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
 	) throws Exception {
 		Map<String, Object> restresponse = new HashMap<String, Object>();
-		restresponse.put("enteredValue", enquiryObject.getWhoActed());
+		restresponse.put("success", true);
+		restresponse.put("message", "Cannot logout. Only comes when success is false");
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	

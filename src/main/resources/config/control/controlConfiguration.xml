@@ -53,7 +53,7 @@
 			<!-- Accounts Department Mail List -->
 			<accountsDeptMailList>prm.seekmentore@gmail.com;techlead.seekmentore@gmail.com;md.seekmentore@gmail.com;founder.seekmentore@gmail.com</accountsDeptMailList>
 			<!-- Testing Group Mail List -->
-			<testingGroupMailList>techlead.seekmentore@gmail.com;founder.seekmentore@gmail.com</testingGroupMailList>
+			<testingGroupMailList>techlead.seekmentore@gmail.com;founder.seekmentore@gmail.com;mkumar123.mk@gmail.com</testingGroupMailList>
 		</importantCompanyMailIdsAndLists>
 	</mailConfiguration>
 </controlConfiguration>
