@@ -20,6 +20,7 @@
 			<webservice id="validateCredential" url="/validateCredential"></webservice>
 			<webservice id="resetPassword" url="/resetPassword"></webservice>
 			<webservice id="logout" url="/logout"></webservice>
+			<webservice id="checkUIpathAccess" url="/checkUIpathAccess"></webservice>
 		</page>
 		<page id="commonsUnsecured" url="/rest/commons">
 			<webservice id="getErrorDetails" url="/getErrorDetails"></webservice>

@@ -80,6 +80,24 @@ public class LoginRestService extends AbstractRestWebservice implements RestMeth
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
+	@Path("/checkUIpathAccess")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String checkUIpathAccess (
+			@FormParam("urlPath") final String urlPath,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		if(!("seek".equals(urlPath))) {
+			restresponse.put("success", true);
+		} else {
+			restresponse.put("success", false);
+			restresponse.put("redirectTo", "/nlp/error?errorCode=101");
+		}
+		restresponse.put("message", "   ");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
 	@Override
 	public void doSecurity(final HttpServletRequest request) {
 	}
