@@ -30,6 +30,8 @@
 		</page>
 		<page id="employeeUnsecured" url="/rest/employee">
 			<webservice id="alertsRemindersGrid" url="/alertsRemindersGrid"></webservice>
+			<webservice id="tasksGrid" url="/tasksGrid"></webservice>
+			<webservice id="workflowsGrid" url="/workflowsGrid"></webservice>
 		</page>
 		<page id="error" url="/error.html"></page>
 	</pageList>

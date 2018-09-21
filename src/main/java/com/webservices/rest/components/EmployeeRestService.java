@@ -82,6 +82,114 @@ public class EmployeeRestService extends AbstractRestWebservice implements RestM
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
+	@Path("/tasksGrid")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String tasksGrid (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<Task> data = new LinkedList<Task>();
+		data.add(new Task(1L));
+		data.add(new Task(2L));
+		data.add(new Task(3L));
+		data.add(new Task(4L));
+		data.add(new Task(5L));
+		data.add(new Task(6L));
+		data.add(new Task(7L));
+		data.add(new Task(8L));
+		data.add(new Task(9L));
+		data.add(new Task(10L));
+		data.add(new Task(11L));
+		data.add(new Task(12L));
+		data.add(new Task(13L));
+		data.add(new Task(14L));
+		data.add(new Task(15L));
+		data.add(new Task(16L));
+		data.add(new Task(17L));
+		data.add(new Task(18L));
+		data.add(new Task(19L));
+		data.add(new Task(20L));
+		data.add(new Task(21L));
+		data.add(new Task(22L));
+		data.add(new Task(23L));
+		data.add(new Task(24L));
+		data.add(new Task(25L));
+		data.add(new Task(26L));
+		data.add(new Task(27L));
+		data.add(new Task(28L));
+		data.add(new Task(29L));
+		data.add(new Task(30L));
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		MailUtils.sendMimeMessageEmail( 
+				"test@grid.com", 
+				"test@grid.com", 
+				"test@grid.com", 
+				"Grid - Params", 
+				convertObjToJSONString(gridComponent, "gridParams"),
+				null);
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/workflowsGrid")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String workflowsGrid (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<Workflow> data = new LinkedList<Workflow>();
+		data.add(new Workflow(1L));
+		data.add(new Workflow(2L));
+		data.add(new Workflow(3L));
+		data.add(new Workflow(4L));
+		data.add(new Workflow(5L));
+		data.add(new Workflow(6L));
+		data.add(new Workflow(7L));
+		data.add(new Workflow(8L));
+		data.add(new Workflow(9L));
+		data.add(new Workflow(10L));
+		data.add(new Workflow(11L));
+		data.add(new Workflow(12L));
+		data.add(new Workflow(13L));
+		data.add(new Workflow(14L));
+		data.add(new Workflow(15L));
+		data.add(new Workflow(16L));
+		data.add(new Workflow(17L));
+		data.add(new Workflow(18L));
+		data.add(new Workflow(19L));
+		data.add(new Workflow(20L));
+		data.add(new Workflow(21L));
+		data.add(new Workflow(22L));
+		data.add(new Workflow(23L));
+		data.add(new Workflow(24L));
+		data.add(new Workflow(25L));
+		data.add(new Workflow(26L));
+		data.add(new Workflow(27L));
+		data.add(new Workflow(28L));
+		data.add(new Workflow(29L));
+		data.add(new Workflow(30L));
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		MailUtils.sendMimeMessageEmail( 
+				"test@grid.com", 
+				"test@grid.com", 
+				"test@grid.com", 
+				"Grid - Params", 
+				convertObjToJSONString(gridComponent, "gridParams"),
+				null);
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
 	class AlertReminder {
 		Long id;
 		Date initiatedDate;
@@ -95,6 +203,56 @@ public class EmployeeRestService extends AbstractRestWebservice implements RestM
 		String subject;
 		
 		AlertReminder(Long id) {
+			this.id = id;
+			initiatedDate = new Date();
+			actionDate = new Date();
+			dueDate = new Date();
+			initiatedDateMillis = initiatedDate.getTime();
+			actionDateMillis = actionDate.getTime();
+			dueDateMillis = dueDate.getTime();
+			initiatedBy = "Shantanu Mukherjee " + id;
+			subject = "Dummy Alert and Reminder for : " + id;
+		}
+	}
+	
+	class Task {
+		Long id;
+		Date initiatedDate;
+		Date actionDate;
+		Long initiatedDateMillis;
+		Long actionDateMillis;
+		String initiatedBy;
+		String actionBy;
+		Date dueDate;
+		Long dueDateMillis;
+		String subject;
+		
+		Task(Long id) {
+			this.id = id;
+			initiatedDate = new Date();
+			actionDate = new Date();
+			dueDate = new Date();
+			initiatedDateMillis = initiatedDate.getTime();
+			actionDateMillis = actionDate.getTime();
+			dueDateMillis = dueDate.getTime();
+			initiatedBy = "Shantanu Mukherjee " + id;
+			subject = "Dummy Alert and Reminder for : " + id;
+		}
+	}
+	
+	class Workflow {
+		Long id;
+		Date initiatedDate;
+		Date actionDate;
+		Long initiatedDateMillis;
+		Long actionDateMillis;
+		String initiatedBy;
+		String actionBy;
+		Date dueDate;
+		Long dueDateMillis;
+		String subject;
+		
+		Workflow(Long id) {
 			this.id = id;
 			initiatedDate = new Date();
 			actionDate = new Date();
