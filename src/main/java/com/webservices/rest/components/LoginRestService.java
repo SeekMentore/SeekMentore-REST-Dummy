@@ -40,6 +40,7 @@ public class LoginRestService extends AbstractRestWebservice implements RestMeth
 		if("seek".equals(userId) && "mentore".equals(password) && "admin".equals(userType)) {
 			restresponse.put("success", true);
 			restresponse.put("redirectTo", "/newUrl");
+			restresponse.put("message", "");
 		} else {
 			restresponse.put("success", false);
 			restresponse.put("message", "This is the Failure message");
