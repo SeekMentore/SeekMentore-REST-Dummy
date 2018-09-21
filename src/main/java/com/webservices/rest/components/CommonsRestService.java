@@ -2,7 +2,6 @@ package com.webservices.rest.components;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -220,81 +219,6 @@ public class CommonsRestService extends AbstractRestWebservice implements RestMe
 		restresponse.put("success", true);
 		restresponse.put("message", "Sent Email Successfully");
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
-	}
-	
-	@Path("/alertAndReminderList")
-	@Consumes("application/x-www-form-urlencoded")
-	@POST
-	public String alertAndReminderList (
-			@FormParam("start") final int start,
-			@FormParam("limit") final int limit,
-			@FormParam("sort") final String sort,
-			@FormParam("filter") final String filter,
-			@Context final HttpServletRequest request,
-			@Context final HttpServletResponse response
-	) throws Exception {
-		Map<String, Object> restresponse = new HashMap<String, Object>();
-		List<AlertReminder> data = new LinkedList<AlertReminder>();
-		data.add(new AlertReminder(1L));
-		data.add(new AlertReminder(2L));
-		data.add(new AlertReminder(3L));
-		data.add(new AlertReminder(4L));
-		data.add(new AlertReminder(5L));
-		data.add(new AlertReminder(6L));
-		data.add(new AlertReminder(7L));
-		data.add(new AlertReminder(8L));
-		data.add(new AlertReminder(9L));
-		data.add(new AlertReminder(10L));
-		data.add(new AlertReminder(11L));
-		data.add(new AlertReminder(12L));
-		data.add(new AlertReminder(13L));
-		data.add(new AlertReminder(14L));
-		data.add(new AlertReminder(15L));
-		data.add(new AlertReminder(16L));
-		data.add(new AlertReminder(17L));
-		data.add(new AlertReminder(18L));
-		data.add(new AlertReminder(19L));
-		data.add(new AlertReminder(20L));
-		data.add(new AlertReminder(21L));
-		data.add(new AlertReminder(22L));
-		data.add(new AlertReminder(23L));
-		data.add(new AlertReminder(24L));
-		data.add(new AlertReminder(25L));
-		data.add(new AlertReminder(26L));
-		data.add(new AlertReminder(27L));
-		data.add(new AlertReminder(28L));
-		data.add(new AlertReminder(29L));
-		data.add(new AlertReminder(30L));
-		restresponse.put("data", data);
-		restresponse.put("totalRecords", data.size());
-		restresponse.put("success", true);
-		restresponse.put("message", "");
-		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
-	}
-	
-	class AlertReminder {
-		Long id;
-		Date initiatedDate;
-		Date actionDate;
-		Long initiatedDateMillis;
-		Long actionDateMillis;
-		String initiatedBy;
-		String actionBy;
-		Date dueDate;
-		Long dueDateMillis;
-		String subject;
-		
-		AlertReminder(Long id) {
-			this.id = id;
-			initiatedDate = new Date();
-			actionDate = new Date();
-			dueDate = new Date();
-			initiatedDateMillis = initiatedDate.getTime();
-			actionDateMillis = actionDate.getTime();
-			dueDateMillis = dueDate.getTime();
-			initiatedBy = "Shantanu Mukherjee";
-			subject = "Dummy Alert and Reminder for : " + id;
-		}
 	}
 	
 	class MenuItem {

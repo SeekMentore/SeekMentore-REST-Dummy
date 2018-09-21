@@ -11,10 +11,9 @@
 		T - Testing Team Access
  -->
 <menu>
-	<pageList id="secured">
-	</pageList>
+	<pageList id="secured"></pageList>
 	<pageList id="unsecured">
-		<page id="index" url="/"></page>
+		<page id="indexDirect" url="/"></page>
 		<page id="index" url="/index.html"></page>
 		<page id="loginRestUnsecured" url="/rest/login">
 			<webservice id="validateCredential" url="/validateCredential"></webservice>
@@ -28,6 +27,9 @@
 			<webservice id="getEmailTemplates" url="/getEmailTemplates"></webservice>
 			<webservice id="loadEmailTemplate" url="/loadEmailTemplate"></webservice>
 			<webservice id="sendEmail" url="/sendEmail"></webservice>
+		</page>
+		<page id="employeeUnsecured" url="/rest/employee">
+			<webservice id="alertsRemindersGrid" url="/alertsRemindersGrid"></webservice>
 		</page>
 		<page id="error" url="/error.html"></page>
 	</pageList>
