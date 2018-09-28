@@ -45,6 +45,7 @@
  */
 var Record = {
 	id : (string) '',
+	selectionModelCheck : (boolean) false,
 	property : (Object) {} // This property will hold the individual POJO coming from JSON
 
 	Record : constructor(id, property) {

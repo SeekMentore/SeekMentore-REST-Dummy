@@ -25,7 +25,7 @@ var GridConstants = {GridConstants Interface}
 					<apply-filter right-align click-event="Grid.applyFilter()" id="{Grid.id}+'-title-toolbar'+'-row-0'+'-cell-0'+'-apply-filter'"></apply-filter>
 					<reset-filter right-align click-event="Grid.resetFilter()" id="{Grid.id}+'-title-toolbar'+'-row-0'+'-cell-0'+'-reset-filter'"></reset-filter>
 				END IF
-				<online-offline-toggle-button right-align click-event="Grid.toggleRemoteLoad()" id="{Grid.id}+'-title-toolbar'+'-row-0'+'-cell-0'+'-online-offline-toggle-button'"></online-offline-toggle-button>
+				<online-offline-toggle-button right-align toggle-event="Grid.toggleRemoteLoad(thisbutton)" id="{Grid.id}+'-title-toolbar'+'-row-0'+'-cell-0'+'-online-offline-toggle-button'"></online-offline-toggle-button>
 				<column-hide-icon right-align click-event="[COMPONENT-COLUMN_SHOW_HIDE_AS_MODAL_POPUP]" id="{Grid.id}+'-title-toolbar'+'-cell-0'+'-row-0'+'-column-hide-icon'"></column-hide-icon>
 				<grid-help-icon right-align click-event="[COMPONENT-GRID_HELP_AS_MODAL_POPUP]" id="{Grid.id}+'-title-toolbar'+'-row-0'+'-cell-0'+'-grid-help-icon'"></grid-help-icon>
 			</cell>
@@ -61,7 +61,7 @@ var GridConstants = {GridConstants Interface}
 		<row class="uigrid-row" id="{Grid.id}+'-column-header-toolbar'+'-row-0'">
 			IF Grid.hasSelectionColumn
 				<cell class="uigrid-cell" id="{Grid.id}+'-column-header-toolbar'+'-row-0'+'-cell-0'">
-					<selection-column-select-unselect-all-cell center-align click-event="Grid.selectionColumnSelectUnselectAll()" id="{Grid.id}+'-column-header-toolbar'+'-row-0'+'-cell-0'+'-selection-column-select-unselect-all-cell'"></selection-column-select-unselect-all-cell>
+					<selection-column-select-unselect-all-cell center-align click-event="Grid.selectionColumnSelectUnselectAll(thischckbox)" id="{Grid.id}+'-column-header-toolbar'+'-row-0'+'-cell-0'+'-selection-column-select-unselect-all-cell'"></selection-column-select-unselect-all-cell>
 				</cell>
 			END IF
 			<looped-scrollable-section-component horizontal-scrolling-after-cells="GridConstants.HORIZONTAL_COLUMN_SHOW_LIMIT" only-paint-if="Grid.columns.size > 0">
@@ -69,7 +69,7 @@ var GridConstants = {GridConstants Interface}
 					IF NOT column.hidden
 						<cell class="uigrid-cell">
 							<column-header>
-								IF Grid.isFilterCapable AND column.filterable AND Grid.getFilterByColumnId(column.id) != NULL <!-- Checking if this particular column is Filtered then only display the remove filter icon -->
+								IF Grid.isFilterCapable AND column.filterable AND column.isFiltered <!-- Checking if this particular column is Filtered then only display the remove filter icon -->
 									<remove-filter-tab left-align click-event="Grid.removeFilterFromColumn(column.id)">
 										<filter-icon center-align></filter-icon>
 										<cross-mark-icon right-align top-align click-event="Grid.removeFilterFromColumn(column.id)"></cross-mark-icon>
@@ -93,7 +93,7 @@ var GridConstants = {GridConstants Interface}
 					<action-column-cell center-align cell-span="Grid.actionColumn.totalButtons">Action Buttons</action-column-cell>
 				</cell>
 			END IF
-		</row>
+		</row>+
 		<row class="uigrid-row">
 			IF Grid.hasSelectionColumn
 				<cell class="uigrid-cell">
@@ -108,26 +108,26 @@ var GridConstants = {GridConstants Interface}
 								IF column.dataType = 'string'
 									<filter-cell-string>
 										<search-icon left-align></search-icon>
-										<string-input-text-box center-align></string-input-text-box>
-										<case-sensitive-toggle-button right-align></case-sensitive-toggle-button>
+										<string-input-text-box center-align text-change-event="Grid.columnFilteredTextChanged(column.id, thistextbox)"></string-input-text-box>
+										<case-sensitive-toggle-button right-align toggle-event="Grid.columnFilteredToggleTextCase(column.id, thisbutton)"></case-sensitive-toggle-button>
 									</filter-cell-string>
 								ELSE IF column.dataType = 'int'
 									<filter-cell-string>
 										<label left-align>GT</label>
-										<greater-than-input-text-box left-align></greater-than-input-text-box>
+										<greater-than-input-text-box left-align text-change-event="Grid.columnFilteredGreaterNumberChanged(column.id, thistextbox)"></greater-than-input-text-box>
 										<label center-align>EQ</label>
-										<equal-to-input-text-box center-align></equal-to-input-text-box>
+										<equal-to-input-text-box center-align text-change-event="Grid.columnFilteredEqualNumberChanged(column.id, thistextbox)"></equal-to-input-text-box>
 										<label right-align>LT</label>
-										<less-than-input-text-box right-align></greater-than-input-text-box>
+										<less-than-input-text-box right-align text-change-event="Grid.columnFilteredLowerNumberChanged(column.id, thistextbox)"></greater-than-input-text-box>
 									</filter-cell-string>
 								ELSE IF column.dataType = 'date'
 									<filter-cell-string>
 										<label left-align>After</label>
-										<after-calendar-icon left-align click-event="[OPEN_CALENDAR_AS_MODAL_POPUP]" mouse-over-tip-before-selecting-date="Select a Start Date" mouse-over-tip-after-selecting-date="[Selected date in dd/mm/yyyy format]"></after-calendar-icon>
+										<after-calendar-icon left-align click-event="[OPEN_CALENDAR_AS_MODAL_POPUP]" date-change-event="Grid.columnFilteredBeforeDateChanged(column.id, thisdatefield)" mouse-over-tip-before-selecting-date="Select a Start Date" mouse-over-tip-after-selecting-date="[Selected date in dd/mm/yyyy format]"></after-calendar-icon>
 										<label center-align>On</label>
-										<on-calendar-icon center-align click-event="[OPEN_CALENDAR_AS_MODAL_POPUP]" mouse-over-tip-before-selecting-date="Select a Specific Date" mouse-over-tip-after-selecting-date="[Selected date in dd/mm/yyyy format]"></on-calendar-icon>
+										<on-calendar-icon center-align click-event="[OPEN_CALENDAR_AS_MODAL_POPUP]" date-change-event="Grid.columnFilteredOnDateChanged(column.id, thisdatefield)" mouse-over-tip-before-selecting-date="Select a Specific Date" mouse-over-tip-after-selecting-date="[Selected date in dd/mm/yyyy format]"></on-calendar-icon>
 										<label right-align>Before</label>
-										<before-calendar-icon right-align click-event="[OPEN_CALENDAR_AS_MODAL_POPUP]" mouse-over-tip-before-selecting-date="Select an End Date" mouse-over-tip-after-selecting-date="[Selected date in dd/mm/yyyy format]"></before-calendar-icon>
+										<before-calendar-icon right-align click-event="[OPEN_CALENDAR_AS_MODAL_POPUP]" date-change-event="Grid.columnFilteredAfterDateChanged(column.id, thisdatefield)" mouse-over-tip-before-selecting-date="Select an End Date" mouse-over-tip-after-selecting-date="[Selected date in dd/mm/yyyy format]"></before-calendar-icon>
 										<!-- The Calendar Icons here will have the following properties
 										1) On click will [OPEN_CALENDAR] to select date
 										2) Before the Date is selected the Icon should appear blue and on mouse over on the icon should display the text written above
@@ -162,17 +162,8 @@ var GridConstants = {GridConstants Interface}
 				<row class="uigrid-row">
 					IF Grid.hasSelectionColumn
 						<cell class="uigrid-cell">
-							<selection-column-record-cell center-align click-event="Grid.selectionButtonCheckedUnchecked(record.id)" mouse-over-event="Grid.selectionButtonMouseOver(record.id)" mouse-click-event="Grid.selectionButtonMouseClicked(record.id)">
-								IF Grid.selectionColumn.attachMapping
-									{value = record.getProperty(Grid.selectionColumn.mapping)} // TRUE = Checked | FALSE = Unchecked
-								ELSE 
-									{value = FALSE = Unchecked}
-								END IF
-								IF NULL != Grid.selectionColumn.renderer 
-									<paint-selection-cell using-function="Grid.selectionColumn.renderer.renderSelectionColumn(record.id, value)"></paint-selection-cell>
-								ELSE
-									<paint-selection-cell using-function="Grid.defaultSelectionColumnRenderer(record.id, value)"></paint-selection-cell>
-								END IF;
+							<selection-column-record-cell center-align click-event="Grid.selectionButtonCheckedUnchecked(record.id, thischeckbox)" mouse-over-event="Grid.selectionButtonMouseOver(record.id)" mouse-click-event="Grid.selectionButtonMouseClicked(record.id)">
+								<paint-selection-cell using-function="Grid.defaultSelectionColumnRenderer(record.id)"></paint-selection-cell>
 							</selection-column-record-cell>
 						</cell>
 					END IF
@@ -180,11 +171,7 @@ var GridConstants = {GridConstants Interface}
 						LOOP column IN Grid.columns 
 							<cell class="uigrid-cell">
 								<column-value-cell center-align click-event="Grid.columnClicked(record.id, column.id)" mouse-over-event="Grid.columnMouseOver(record.id, column.id)" mouse-click-event="Grid.columnMouseClicked(record.id, column.id)">
-									IF NULL != column.renderer
-										<paint-column-cell using-function="column.renderer.renderColumn(record.id, column.id)"></paint-column-cell>
-									ELSE
-										<paint-column-cel using-function="Grid.defaultColumnValueRenderer(record.id, column.id)"></paint-column-cell>
-									END IF
+									<paint-column-cel using-function="Grid.defaultColumnValueRenderer(record.id, column.id)"></paint-column-cell>
 								</column-value-cell>
 							</cell>
 						END LOOP
@@ -194,11 +181,7 @@ var GridConstants = {GridConstants Interface}
 							LOOP button IN Grid.actionColumn.buttons
 								<cell class="uigrid-cell">
 									<action-button-cell center-align click-event="Grid.actionButtonClicked(record.id, button.id)" mouse-over-event="Grid.actionButtonMouseOver(record.id, button.id)" mouse-click-event="Grid.actionButtonMouseClicked(record.id, button.id)">
-										IF NULL != button.renderer
-											<paint-action-button-cell using-function="button.renderer.renderActionButton(record.id, button.id)"></paint-action-button-cell>
-										ELSE
-											<paint-action-button-cell using-function="Grid.defaultActionButtonRenderer(record.id, button.id)"></paint-action-button-cell>
-										END IF
+										<paint-action-button-cell using-function="Grid.defaultActionButtonRenderer(record.id, button.id)"></paint-action-button-cell>
 									</action-button-cell>
 								</cell>
 							END LOOP
@@ -229,7 +212,7 @@ var GridConstants = {GridConstants Interface}
 						Page {Grid.paginator.currentPage} of {Grid.paginator.totalPages}
 						<next-page-icon click-event="Grid.loadNextPage()"></next-page-icon>
 						<input-text-go-to-page></input-text-go-to-page>
-						<go-to-page-button right-align click-event="Grid.loadPage(<input-text-go-to-page>.value)"></go-to-page-button>
+						<go-to-page-button right-align click-event="Grid.loadPage(<input-text-go-to-page>)"></go-to-page-button>
 					</navigate-page-component>
 				END IF
 			</cell>
@@ -271,7 +254,7 @@ Other Components which are called above
 					ELSE
 						{checkbox-checked = TRUE}
 					END
-					<checkbox-component center-align disabled="{checkbox-disabled}" checked="{checkbox-checked}" click-event="Grid.toggleShowHide(column.id)"></checkbox-component>
+					<checkbox-component center-align disabled="{checkbox-disabled}" checked="{checkbox-checked}" click-event="Grid.toggleShowHide(column.id, thischeckbox)"></checkbox-component>
 				</cell>
 			</row>
 		END LOOP
@@ -304,7 +287,10 @@ Other Components which are called above
 					<filter-option center-align value="filterOption.value">filterOption.label</filter-option>
 				</cell>
 				<cell class="uigrid-cell">
-					<checkbox-component checked="{checkbox-checked}" click-event="Grid.filterSelectedNotSelectedToggle(column.id, filterOption.id)"></checkbox-component>
+					IF filterOption.isSelected
+						{checkbox-checked = TRUE}
+					ELSE
+					<checkbox-component checked="{checkbox-checked}" click-event="Grid.filterSelectedNotSelectedToggle(column.id, filterOption.id, thischeckbox)"></checkbox-component>
 				</cell>
 			</row>
 		END LOOP

@@ -65,31 +65,35 @@ var Paginator = {
 		 * Whenver you change currentPage also set the startRecordNumber
 		 */
 		currentPage = 1;
+		computeStartRecordNumber();
+	},
+	
+	computeStartRecordNumber : function() {
 		startRecordNumber = ((currentPage - 1) * numberOfRecordsPerPage) + 1,
 	},
 		
-	getNextPage : function() {
+	navigateNextPage : function() {
 		/*
 		 * Check if the currentPage is not the last Page
-		 * If true Increment the currentPage and return its value
-		 * Else return -1
+		 * If true Increment the currentPage 
 		 */
+		computeStartRecordNumber();
 	},
 	
-	getPreviousPage : function() {
+	navigatePreviousPage : function() {
 		/*
 		 * Check if the currentPage is not the first Page
-		 * If true Decrement the currentPage and return its value
-		 * Else return -1
+		 * If true Decrement the currentPage
 		 */
+		computeStartRecordNumber();
 	},
 	
-	goToPage : function(pageNum) {
+	navigateToPage : function(pageNum) {
 		/*
 		 * Check if pageNum is between 1 & totalPages
-		 * If true set currentPage to pageNum and return true
-		 * Else return false
+		 * If true set currentPage to pageNum 
 		 */
+		computeStartRecordNumber();
 	}
 	
 	/**

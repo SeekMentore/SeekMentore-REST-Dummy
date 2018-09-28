@@ -49,7 +49,7 @@ var Sorter = {
 	columnName : (string) '',
 	order : (listed values {'ASC' | 'DESC' }) 'ASC',
 
-	Sorter : constructor(id, mapping, columnName) {
+	Sorter : constructor(id, mapping, columnName, order) {
 		// Set values
 	}
 	

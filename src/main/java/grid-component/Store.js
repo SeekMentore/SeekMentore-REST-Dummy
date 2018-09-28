@@ -76,7 +76,22 @@ var Store = {
 			}
 			makeHttpRequest(restURL, JSON_encode($params)).subscribe(){
 				--> convert restData into data using convertIntoRecordData
-				gridObject.paintData();
+				gridObject.paintRecords();
+			}
+			error(){
+				Alert Message - Common alert of Utils
+			}
+	},
+	
+	downloadGridData : function(gridObject) {
+		if isStatic
+			Show Alert Failure - message = 'This functionality is currently not available for Static data'
+		else
+			--> Make a rest call and store the response.data in restData
+			$params = {}
+			makeHttpRequest(restURL, JSON_encode($params)).subscribe(){
+				--> The response will come as a downloaded file content of type = 'application-octet-stream'
+					Get the content downloaded using an <iframe>
 			}
 			error(){
 				Alert Message - Common alert of Utils

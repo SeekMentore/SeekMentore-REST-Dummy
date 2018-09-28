@@ -52,6 +52,7 @@ var Filter = {
 	equalTo : (int) '',
 	greaterThan : (int) '',
 	stringValue : (string) '',
+	textCaseSensitiveSearch : (boolean) true,
 	beforeDate : (Date) '',
 	onDate : (Date) '',
 	afterDate : (Date) '',
@@ -62,6 +63,26 @@ var Filter = {
 
 	Filter : constructor(id, type, mapping, columnId) {
 		// Set values
+	},
+	
+	nullifyFilterProperties : function() {
+		if type = 'number' {
+			lessThan = null;
+			equalTo = null;
+			greaterThan = null;
+		} else if type = 'string' {
+			stringValue = null;
+			textCaseSensitiveSearch = true;
+		} else if type = 'date' {
+			beforeDate = null;
+			onDate = null;
+			afterDate = null;
+			beforeDateMillis = null;
+			onDateMillis = null;
+			afterDateMillis = null;
+		} else if type = 'list' {
+			listValue = [] // empty list
+		}
 	}
 	
 	/**

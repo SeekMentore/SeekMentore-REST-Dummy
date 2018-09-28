@@ -56,6 +56,10 @@ var Column = {
 	filterOptions :(list of <FilterOption>) []<FilterOption>, // This is a JS definition which we defined
 	renderer : (Renderer) null, // This is a JS definition which we defined
 	eventHandler : (EventHandler) null, // This is a JS definition which we defined
+	filter : (Filter) new Filter('newFilterUniqueId', this.dataType, this.mapping, this.id),
+	isFiltered : (boolean) false, // This should not be set in constructor
+	shouldHide : (boolean) false, // This should not be set in constructor
+	
 	
 	Column : constructor(id, headerName, dataType, mapping, sortable, filterable, hideable, hidden, filterOptions, renderer, eventHandler) {
 		/*

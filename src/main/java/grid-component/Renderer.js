@@ -45,21 +45,24 @@
  */
 var Renderer = {
 	id : (string) '',
+	callback_renderSelectionColumn : (function) null,
+	callback_renderColumn : (function) null,
+	callback_renderActionButton : (function) null,
 
-	Renderer : constructor(id) {
+	Renderer : constructor(id, callback_renderSelectionColumn, callback_renderColumn, callback_renderActionButton) {
 		// Set values
 	}
 
 	renderSelectionColumn : function({Decide params as per need}) {
-		
+		callback_renderSelectionColumn({Decide params as per need});
 	},
 	
 	renderColumn : function({Decide params as per need}) {
-		
+		callback_renderColumn({Decide params as per need});
 	},
 	
 	renderActionButton : function({Decide params as per need}) {
-		
+		callback_renderActionButton({Decide params as per need});
 	},
 
 	/**

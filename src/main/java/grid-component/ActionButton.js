@@ -46,10 +46,11 @@
 var ActionButton = {
 	id : (string) '',
 	label : (string) '',
+	btnclass : (HTML CSS class) 'btnSubmit',
 	renderer : (Renderer) null, // This is a JS definition which we defined
 	eventHandler : (EventHandler) null, // This is a JS definition which we defined
 	
-	ActionButton : constructor(id, label, renderer, eventHandler) {
+	ActionButton : constructor(id, label, btnclass, renderer, eventHandler) {
 		/*
 		 * If label, renderer, eventHandler are Not Null
 		 * set values to class variables

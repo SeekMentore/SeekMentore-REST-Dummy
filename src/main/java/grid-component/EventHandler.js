@@ -45,21 +45,24 @@
  */
 var EventHandler = {
 	id : (string) '',
+	callback_clickEvent : (function) null,
+	callback_mouseOverEvent : (function) null,
+	callback_mouseClickEvent : (function) null,
 
-	EventHandler : constructor(id) {
+	EventHandler : constructor(id, callback_clickEvent, callback_mouseOverEvent, callback_mouseClickEvent) {
 		// Set values
 	}
 
 	clickEvent : function({Decide params as per need}) {
-		
+		callback_clickEvent({Decide params as per need});
 	},
 	
 	mouseOverEvent : function({Decide params as per need}) {
-		
+		callback_mouseOverEvent({Decide params as per need});
 	},
 	
 	mouseClickEvent : function({Decide params as per need}) {
-		
+		callback_mouseClickEvent({Decide params as per need});
 	},
 
 	/**
