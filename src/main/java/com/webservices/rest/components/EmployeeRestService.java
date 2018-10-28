@@ -20,7 +20,6 @@ import org.springframework.stereotype.Component;
 import com.constants.RestMethodConstants;
 import com.constants.ScopeConstants;
 import com.model.gridcomponent.GridComponent;
-import com.utils.MailUtils;
 import com.webservices.rest.AbstractRestWebservice;
 
 @Component
@@ -47,38 +46,11 @@ public class EmployeeRestService extends AbstractRestWebservice implements RestM
 		data.add(new AlertReminder(7L));
 		data.add(new AlertReminder(8L));
 		data.add(new AlertReminder(9L));
-		data.add(new AlertReminder(10L));
-		data.add(new AlertReminder(11L));
-		data.add(new AlertReminder(12L));
-		data.add(new AlertReminder(13L));
-		data.add(new AlertReminder(14L));
-		data.add(new AlertReminder(15L));
-		data.add(new AlertReminder(16L));
-		data.add(new AlertReminder(17L));
-		data.add(new AlertReminder(18L));
-		data.add(new AlertReminder(19L));
-		data.add(new AlertReminder(20L));
-		data.add(new AlertReminder(21L));
-		data.add(new AlertReminder(22L));
-		data.add(new AlertReminder(23L));
-		data.add(new AlertReminder(24L));
-		data.add(new AlertReminder(25L));
-		data.add(new AlertReminder(26L));
-		data.add(new AlertReminder(27L));
-		data.add(new AlertReminder(28L));
-		data.add(new AlertReminder(29L));
-		data.add(new AlertReminder(30L));
+		data.add(new AlertReminder(10L));		
 		restresponse.put("data", data);
 		restresponse.put("totalRecords", data.size());
 		restresponse.put("success", true);
 		restresponse.put("message", "");
-		MailUtils.sendMimeMessageEmail( 
-				"test@grid.com", 
-				"test@grid.com", 
-				"test@grid.com", 
-				"Grid - Params", 
-				convertObjToJSONString(gridComponent, "gridParams"),
-				null);
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
@@ -101,38 +73,11 @@ public class EmployeeRestService extends AbstractRestWebservice implements RestM
 		data.add(new Task(7L));
 		data.add(new Task(8L));
 		data.add(new Task(9L));
-		data.add(new Task(10L));
-		data.add(new Task(11L));
-		data.add(new Task(12L));
-		data.add(new Task(13L));
-		data.add(new Task(14L));
-		data.add(new Task(15L));
-		data.add(new Task(16L));
-		data.add(new Task(17L));
-		data.add(new Task(18L));
-		data.add(new Task(19L));
-		data.add(new Task(20L));
-		data.add(new Task(21L));
-		data.add(new Task(22L));
-		data.add(new Task(23L));
-		data.add(new Task(24L));
-		data.add(new Task(25L));
-		data.add(new Task(26L));
-		data.add(new Task(27L));
-		data.add(new Task(28L));
-		data.add(new Task(29L));
-		data.add(new Task(30L));
+		data.add(new Task(10L));		
 		restresponse.put("data", data);
 		restresponse.put("totalRecords", data.size());
 		restresponse.put("success", true);
 		restresponse.put("message", "");
-		MailUtils.sendMimeMessageEmail( 
-				"test@grid.com", 
-				"test@grid.com", 
-				"test@grid.com", 
-				"Grid - Params", 
-				convertObjToJSONString(gridComponent, "gridParams"),
-				null);
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
@@ -155,38 +100,11 @@ public class EmployeeRestService extends AbstractRestWebservice implements RestM
 		data.add(new Workflow(7L));
 		data.add(new Workflow(8L));
 		data.add(new Workflow(9L));
-		data.add(new Workflow(10L));
-		data.add(new Workflow(11L));
-		data.add(new Workflow(12L));
-		data.add(new Workflow(13L));
-		data.add(new Workflow(14L));
-		data.add(new Workflow(15L));
-		data.add(new Workflow(16L));
-		data.add(new Workflow(17L));
-		data.add(new Workflow(18L));
-		data.add(new Workflow(19L));
-		data.add(new Workflow(20L));
-		data.add(new Workflow(21L));
-		data.add(new Workflow(22L));
-		data.add(new Workflow(23L));
-		data.add(new Workflow(24L));
-		data.add(new Workflow(25L));
-		data.add(new Workflow(26L));
-		data.add(new Workflow(27L));
-		data.add(new Workflow(28L));
-		data.add(new Workflow(29L));
-		data.add(new Workflow(30L));
+		data.add(new Workflow(10L));		
 		restresponse.put("data", data);
 		restresponse.put("totalRecords", data.size());
 		restresponse.put("success", true);
 		restresponse.put("message", "");
-		MailUtils.sendMimeMessageEmail( 
-				"test@grid.com", 
-				"test@grid.com", 
-				"test@grid.com", 
-				"Grid - Params", 
-				convertObjToJSONString(gridComponent, "gridParams"),
-				null);
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	

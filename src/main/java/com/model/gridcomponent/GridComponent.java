@@ -10,8 +10,10 @@ public class GridComponent implements Serializable {
 	private int start;
 	private int limit;
 	private String otherParams;	
-	private List<Sorter> sorters;
-	private List<Filter> filters;
+	private String filters;	
+	private String sorters;	
+	private List<Sorter> sorterList;
+	private List<Filter> filterList;
 	
 	public GridComponent() {}
 	
@@ -33,16 +35,32 @@ public class GridComponent implements Serializable {
 	public void setOtherParams(String otherParams) {
 		this.otherParams = otherParams;
 	}
-	public List<Sorter> getSorters() {
-		return sorters;
+	public List<Sorter> getSorterList() {
+		return sorterList;
 	}
-	public void setSorters(List<Sorter> sorters) {
-		this.sorters = sorters;
+	public void setSorterList(List<Sorter> sorterList) {
+		this.sorterList = sorterList;
 	}
-	public List<Filter> getFilters() {
+	public List<Filter> getFilterList() {
+		return filterList;
+	}
+	public void setFilterList(List<Filter> filterList) {
+		this.filterList = filterList;
+	}
+
+	public String getFilters() {
 		return filters;
 	}
-	public void setFilters(List<Filter> filters) {
+
+	public void setFilters(String filters) {
 		this.filters = filters;
+	}
+
+	public String getSorters() {
+		return sorters;
+	}
+
+	public void setSorters(String sorters) {
+		this.sorters = sorters;
 	}
 }

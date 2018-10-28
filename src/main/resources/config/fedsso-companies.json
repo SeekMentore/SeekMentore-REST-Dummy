@@ -1,0 +1,12 @@
+[
+	{
+		"GUID":"1",
+		"Roles":["RoleID1","RoleID2"],
+		"HomePage":"Page1"
+	},
+	{
+		"GUID":"2",
+		"Roles":["RoleID3","RoleID4"],
+		"HomePage":"Page2"
+	}
+]

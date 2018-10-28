@@ -33,6 +33,16 @@
 			<webservice id="tasksGrid" url="/tasksGrid"></webservice>
 			<webservice id="workflowsGrid" url="/workflowsGrid"></webservice>
 		</page>
+		<page id="adminUnsecured" url="/rest/admin">
+			<webservice id="registeredTutorsList" url="/registeredTutorsList"></webservice>
+			<webservice id="registeredTutorCheckDataAccess" url="/registeredTutorCheckDataAccess"></webservice>
+		</page>
+		<page id="registeredTutorUnsecured" url="/rest/registeredTutor">
+			<webservice id="uploadedDocuments" url="/uploadedDocuments"></webservice>
+			<webservice id="bankDetails" url="/bankDetails"></webservice>
+			<webservice id="currentPackages" url="/currentPackages"></webservice>
+			<webservice id="historyPackages" url="/historyPackages"></webservice>
+		</page>
 		<page id="error" url="/error.html"></page>
 	</pageList>
 </menu>

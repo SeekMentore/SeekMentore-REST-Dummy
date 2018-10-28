@@ -2,6 +2,8 @@ package com.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Reader;
@@ -12,6 +14,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.util.IOUtils;
 
 import com.constants.FileConstants;
 import com.exception.ApplicationException;
@@ -40,6 +44,14 @@ public class FileUtils implements FileConstants {
 			return EMPTY_STRING;
 		}
 		return EMPTY_STRING;
+	}
+	
+	public static byte[] readContentFromFile(final String filePath) throws FileNotFoundException, IOException {
+		return IOUtils.toByteArray(new FileInputStream(new File("C:\\Users\\smukherjee\\Documents\\GitHub\\SeekMentore-REST-Dummy\\src\\main\\resources\\config\\fedsso-companies.json")));
+	}
+	
+	public static String convertByteArrayToString(byte[] content) {
+		return new String(content);
 	}
 
 	public static void generateArbitraryFile(final byte[] content, final String url) throws IOException {
