@@ -36,10 +36,16 @@
 		<page id="adminUnsecured" url="/rest/admin">
 			<webservice id="registeredTutorsList" url="/registeredTutorsList"></webservice>
 			<webservice id="registeredTutorCheckDataAccess" url="/registeredTutorCheckDataAccess"></webservice>
+			<webservice id="subscribedCustomersList" url="/subscribedCustomersList"></webservice>
+			<webservice id="subscribedCustomerCheckDataAccess" url="/subscribedCustomerCheckDataAccess"></webservice>
 		</page>
 		<page id="registeredTutorUnsecured" url="/rest/registeredTutor">
 			<webservice id="uploadedDocuments" url="/uploadedDocuments"></webservice>
 			<webservice id="bankDetails" url="/bankDetails"></webservice>
+			<webservice id="currentPackages" url="/currentPackages"></webservice>
+			<webservice id="historyPackages" url="/historyPackages"></webservice>
+		</page>
+		<page id="subscribedCustomerUnsecured" url="/rest/subscribedCustomer">
 			<webservice id="currentPackages" url="/currentPackages"></webservice>
 			<webservice id="historyPackages" url="/historyPackages"></webservice>
 		</page>

@@ -126,6 +126,85 @@ public class AdminRestService extends AbstractRestWebservice implements RestMeth
 		restresponse.put("message", "");
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
+	
+	@Path("/subscribedCustomersList")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String subscribedCustomersList (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<SubscribedCustomerTest> data = new LinkedList<SubscribedCustomerTest>();
+		data.add(new SubscribedCustomerTest(1L));
+		data.add(new SubscribedCustomerTest(2L));
+		data.add(new SubscribedCustomerTest(3L));
+		data.add(new SubscribedCustomerTest(4L));
+		data.add(new SubscribedCustomerTest(5L));
+		data.add(new SubscribedCustomerTest(6L));
+		data.add(new SubscribedCustomerTest(7L));
+		data.add(new SubscribedCustomerTest(8L));
+		data.add(new SubscribedCustomerTest(9L));
+		data.add(new SubscribedCustomerTest(10L));		
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	class SubscribedCustomerTest {
+		 Long customerId;
+		 String name;
+		 String contactNumber;
+		 String emailId;
+		 Long enquiryID;
+		 String studentGrades;
+		 String interestedSubjects;
+		 String location;
+		 String addressDetails;
+		 String additionalDetails;
+		 String encryptedPassword;
+		 String userId;
+		 Date recordLastUpdated;
+		 Long recordLastUpdatedMillis;
+		 String updatedBy;
+		
+		 SubscribedCustomerTest(Long customerId) {
+			this.customerId = customerId;
+			name = "shantanu mukherjee";
+			contactNumber = "9739936482";
+			emailId = "abc@efg.com";
+			enquiryID = 5L;
+			studentGrades = "01;02;03";
+			interestedSubjects = "02;03;04";
+			location = "03";
+			addressDetails = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
+			additionalDetails = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
+			encryptedPassword = "";
+			userId = "abc";
+			recordLastUpdated = new Date();
+			recordLastUpdatedMillis = recordLastUpdated.getTime();
+			updatedBy = "abcf";
+		}
+	}
+	
+	@Path("/subscribedCustomerCheckDataAccess")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String subscribedCustomerCheckDataAccess (
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("formDataEditAccess", true);
+		restresponse.put("activePackageViewAccess", true);
+		restresponse.put("historyPackagesViewAccess", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
 
 	@Override
 	protected void doSecurity(HttpServletRequest request) throws Exception {
