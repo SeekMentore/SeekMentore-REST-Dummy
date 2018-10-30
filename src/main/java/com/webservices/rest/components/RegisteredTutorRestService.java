@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
@@ -67,7 +68,7 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 		 Long actionDatedMillis;
 		 byte[] content;
 		
-		 TutorDocumentTest(Long documentId) {
+		 public TutorDocumentTest(Long documentId) {
 			this.documentId = documentId;
 			tutorId = 1L;
 			fsKey = "random key";
@@ -108,19 +109,19 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 	}
 	
 	class BankAccount {
-		 Long bacnkAccountId;
+		 Long bankAccountId;
 		 String bankName;
 		 String accountNumber;
 		 String ifscCode;
 		 String accountHolderName;
 		 String isDefault;		 
 		
-		 BankAccount(Long bacnkAccountId) {
-			this.bacnkAccountId = bacnkAccountId;
+		public BankAccount(Long bankAccountId) {
+			this.bankAccountId = bankAccountId;
 			bankName = "KOTAK MAHINDRA";
 			accountNumber = "1712179763";
 			ifscCode = "Fake file";
-			isDefault = bacnkAccountId%2 == 0 ? "Y" : "N";
+			isDefault = bankAccountId%2 == 0 ? "Y" : "N";
 			accountHolderName = "AMIT MISHRA";
 		}
 	}
@@ -189,7 +190,7 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 		 Date endDate;
 		 Long endDateMillis;
 		
-		 SubscriptionPackage(Long subscriptionPackageId) {
+		 public SubscriptionPackage(Long subscriptionPackageId) {
 			this.subscriptionPackageId = subscriptionPackageId;
 			customerName = "Parag Agarwal";
 			totalHours = 25;
@@ -199,6 +200,174 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 			endDate = new Date();
 			endDateMillis = endDate.getTime();
 		}
+	}
+	
+	@Path("/approveTutorDocument")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String approveTutorDocument (
+			@FormParam("selectedId") final String selectedId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Document Approved");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/approveMultipleTutorDocument")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String approveMultipleTutorDocument (
+			@FormParam("selectedIdsList") final String selectedIdsList,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Documents Approved");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/sendReminderTutorDocument")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String sendReminderTutorDocument (
+			@FormParam("selectedId") final String selectedId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Document Sent Reminder");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/sendReminderMultipleTutorDocument")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String sendReminderMultipleTutorDocument (
+			@FormParam("selectedIdsList") final String selectedIdsList,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Documents Sent Reminder");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/rejectTutorDocument")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String rejectTutorDocument (
+			@FormParam("selectedId") final String selectedId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Document Rejected");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/rejectMultipleTutorDocument")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String rejectMultipleTutorDocument (
+			@FormParam("selectedIdsList") final String selectedIdsList,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Documents Rejected");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/approveBankAccount")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String approveBankAccount (
+			@FormParam("selectedId") final String selectedId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Bank Account Approved");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/approveMultipleBankAccount")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String approveMultipleBankAccount (
+			@FormParam("selectedIdsList") final String selectedIdsList,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Bank Accounts Approved");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/makeDefaultBankAccount")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String makeDefaultBankAccount (
+			@FormParam("selectedId") final String selectedId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Bank Account Made Default");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/rejectBankAccount")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String rejectBankAccount (
+			@FormParam("selectedId") final String selectedId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Bank Account Rejected");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/rejectMultipleBankAccount")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String rejectMultipleBankAccount (
+			@FormParam("selectedIdsList") final String selectedIdsList,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Bank Accounts Rejected");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/updateTutorRecord")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String updateTutorRecord (
+			@FormParam("completeTutorRecord") final String completeTutorRecord,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Tutor Record Updated");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 
 	@Override

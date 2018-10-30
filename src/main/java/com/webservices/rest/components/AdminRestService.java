@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
@@ -127,6 +128,20 @@ public class AdminRestService extends AbstractRestWebservice implements RestMeth
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
+	@Path("/blacklistRegisteredTutors")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String blacklistRegisteredTutors (
+			@FormParam("tutorIdsList") final String tutorIdsList,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Ids blacklisted");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
 	@Path("/subscribedCustomersList")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@POST
@@ -203,6 +218,20 @@ public class AdminRestService extends AbstractRestWebservice implements RestMeth
 		restresponse.put("activePackageViewAccess", true);
 		restresponse.put("historyPackagesViewAccess", true);
 		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/blacklistSubscribedCustomers")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String blacklistSubscribedCustomers (
+			@FormParam("cutomerIdsList") final String cutomerIdsList,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Ids blacklisted");		
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 

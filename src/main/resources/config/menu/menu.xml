@@ -36,18 +36,33 @@
 		<page id="adminUnsecured" url="/rest/admin">
 			<webservice id="registeredTutorsList" url="/registeredTutorsList"></webservice>
 			<webservice id="registeredTutorCheckDataAccess" url="/registeredTutorCheckDataAccess"></webservice>
+			<webservice id="blacklistRegisteredTutors" url="/blacklistRegisteredTutors"></webservice>
 			<webservice id="subscribedCustomersList" url="/subscribedCustomersList"></webservice>
 			<webservice id="subscribedCustomerCheckDataAccess" url="/subscribedCustomerCheckDataAccess"></webservice>
+			<webservice id="blacklistSubscribedCustomers" url="/blacklistSubscribedCustomers"></webservice>
 		</page>
 		<page id="registeredTutorUnsecured" url="/rest/registeredTutor">
 			<webservice id="uploadedDocuments" url="/uploadedDocuments"></webservice>
 			<webservice id="bankDetails" url="/bankDetails"></webservice>
 			<webservice id="currentPackages" url="/currentPackages"></webservice>
 			<webservice id="historyPackages" url="/historyPackages"></webservice>
+			<webservice id="approveTutorDocument" url="/approveTutorDocument"></webservice>
+			<webservice id="approveMultipleTutorDocument" url="/approveMultipleTutorDocument"></webservice>
+			<webservice id="sendReminderTutorDocument" url="/sendReminderTutorDocument"></webservice>
+			<webservice id="sendReminderMultipleTutorDocument" url="/sendReminderMultipleTutorDocument"></webservice>
+			<webservice id="rejectTutorDocument" url="/rejectTutorDocument"></webservice>
+			<webservice id="rejectMultipleTutorDocument" url="/rejectMultipleTutorDocument"></webservice>
+			<webservice id="approveBankAccount" url="/approveBankAccount"></webservice>
+			<webservice id="approveMultipleBankAccount" url="/approveMultipleBankAccount"></webservice>
+			<webservice id="makeDefaultBankAccount" url="/makeDefaultBankAccount"></webservice>
+			<webservice id="rejectBankAccount" url="/rejectBankAccount"></webservice>
+			<webservice id="rejectMultipleBankAccount" url="/rejectMultipleBankAccount"></webservice>
+			<webservice id="updateTutorRecord" url="/updateTutorRecord"></webservice>
 		</page>
 		<page id="subscribedCustomerUnsecured" url="/rest/subscribedCustomer">
 			<webservice id="currentPackages" url="/currentPackages"></webservice>
 			<webservice id="historyPackages" url="/historyPackages"></webservice>
+			<webservice id="updateCustomerRecord" url="/updateCustomerRecord"></webservice>
 		</page>
 		<page id="error" url="/error.html"></page>
 	</pageList>

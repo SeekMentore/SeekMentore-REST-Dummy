@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
@@ -92,7 +93,7 @@ public class SubscribedCustomerRestService extends AbstractRestWebservice implem
 		 Date endDate;
 		 Long endDateMillis;
 		
-		 SubscriptionPackage1(Long subscriptionPackageId) {
+		 public SubscriptionPackage1(Long subscriptionPackageId) {
 			this.subscriptionPackageId = subscriptionPackageId;
 			customerName = "Parag Agarwal";
 			totalHours = 25;
@@ -102,6 +103,20 @@ public class SubscribedCustomerRestService extends AbstractRestWebservice implem
 			endDate = new Date();
 			endDateMillis = endDate.getTime();
 		}
+	}
+	
+	@Path("/updateCustomerRecord")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String updateCustomerRecord (
+			@FormParam("completeCustomerRecord") final String completeCustomerRecord,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Tutor Record Updated");		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 
 	@Override
