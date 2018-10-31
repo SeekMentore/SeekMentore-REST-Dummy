@@ -56,7 +56,7 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
-	class TutorDocumentTest {
+	public class TutorDocumentTest {
 		 Long documentId;
 		 Long tutorId;
 		 String fsKey;
@@ -65,7 +65,7 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 		 String whoActed;
 		 String remarks;
 		 Date actionDate;
-		 Long actionDatedMillis;
+		 Long actionDateMillis;
 		 byte[] content;
 		
 		 public TutorDocumentTest(Long documentId) {
@@ -77,7 +77,7 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 			whoActed = "abcf";
 			remarks = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
 			actionDate = new Date();
-			actionDatedMillis = actionDate.getTime();			
+			actionDateMillis = actionDate.getTime();			
 		}
 	}
 	
@@ -108,7 +108,7 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
-	class BankAccount {
+	public class BankAccount {
 		 Long bankAccountId;
 		 String bankName;
 		 String accountNumber;
@@ -180,7 +180,7 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
-	class SubscriptionPackage {
+	public class SubscriptionPackage {
 		 Long subscriptionPackageId;
 		 String customerName;
 		 Integer totalHours;

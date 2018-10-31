@@ -83,7 +83,7 @@ public class SubscribedCustomerRestService extends AbstractRestWebservice implem
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
-	class SubscriptionPackage1 {
+	public class SubscriptionPackage1 {
 		 Long subscriptionPackageId;
 		 String customerName;
 		 Integer totalHours;

@@ -64,6 +64,30 @@
 			<webservice id="historyPackages" url="/historyPackages"></webservice>
 			<webservice id="updateCustomerRecord" url="/updateCustomerRecord"></webservice>
 		</page>
+		<page id="supportUnsecured" url="/rest/support">
+			<webservice id="nonContactedBecomeTutorsList" url="/nonContactedBecomeTutorsList"></webservice>
+			<webservice id="nonVerifiedBecomeTutorsList" url="/nonVerifiedBecomeTutorsList"></webservice>
+			<webservice id="verifiedBecomeTutorsList" url="/verifiedBecomeTutorsList"></webservice>
+			<webservice id="verificationFailedBecomeTutorsList" url="/verificationFailedBecomeTutorsList"></webservice>
+			<webservice id="toBeReContactedBecomeTutorsList" url="/toBeReContactedBecomeTutorsList"></webservice>
+			<webservice id="selectedBecomeTutorsList" url="/selectedBecomeTutorsList"></webservice>
+			<webservice id="rejectedBecomeTutorsList" url="/rejectedBecomeTutorsList"></webservice>
+			<webservice id="registeredBecomeTutorsList" url="/registeredBecomeTutorsList"></webservice>			
+			<webservice id="nonContactedEnquirysList" url="/nonContactedEnquirysList"></webservice>
+			<webservice id="nonVerifiedEnquirysList" url="/nonVerifiedEnquirysList"></webservice>
+			<webservice id="verifiedEnquirysList" url="/verifiedEnquirysList"></webservice>
+			<webservice id="verificationFailedEnquirysList" url="/verificationFailedEnquirysList"></webservice>
+			<webservice id="toBeReContactedEnquirysList" url="/toBeReContactedEnquirysList"></webservice>
+			<webservice id="selectedEnquirysList" url="/selectedEnquirysList"></webservice>
+			<webservice id="rejectedEnquirysList" url="/rejectedEnquirysList"></webservice>			
+			<webservice id="nonContactedSubscriptionsList" url="/nonContactedSubscriptionsList"></webservice>
+			<webservice id="nonVerifiedSubscriptionsList" url="/nonVerifiedSubscriptionsList"></webservice>
+			<webservice id="verifiedSubscriptionsList" url="/verifiedSubscriptionsList"></webservice>
+			<webservice id="verificationFailedSubscriptionsList" url="/verificationFailedSubscriptionsList"></webservice>
+			<webservice id="toBeReContactedSubscriptionsList" url="/toBeReContactedSubscriptionsList"></webservice>
+			<webservice id="selectedSubscriptionsList" url="/selectedSubscriptionsList"></webservice>
+			<webservice id="rejectedSubscriptionsList" url="/rejectedSubscriptionsList"></webservice>
+		</page>
 		<page id="error" url="/error.html"></page>
 	</pageList>
 </menu>
