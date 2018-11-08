@@ -1,5 +1,6 @@
 package com.webservices.rest.components;
 
+import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -15,6 +16,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -357,16 +360,23 @@ public class RegisteredTutorRestService extends AbstractRestWebservice implement
 	}
 	
 	@Path("/updateTutorRecord")
-	@Consumes("application/x-www-form-urlencoded")
+	@Consumes({MediaType.MULTIPART_FORM_DATA})
 	@POST
 	public String updateTutorRecord (
-			@FormParam("completeTutorRecord") final String completeTutorRecord,
+			@FormDataParam("completeUpdatedRecord") final String completeUpdatedRecord,
+			@FormDataParam("parentId") final String parentId,
+			@FormDataParam("inputFilePANCard") final InputStream uploadedInputStreamFilePANCard,
+			@FormDataParam("inputFilePANCard") final FormDataContentDisposition uploadedFileDetailFilePANCard,
+			@FormDataParam("inputFileAadhaarCard") final InputStream uploadedInputStreamFileAadhaarCard,
+			@FormDataParam("inputFileAadhaarCard") final FormDataContentDisposition uploadedFileDetailFileAadhaarCard,
+			@FormDataParam("inputFilePhoto") final InputStream uploadedInputStreamFilePhoto,
+			@FormDataParam("inputFilePhoto") final FormDataContentDisposition uploadedFileDetailFilePhoto,
 			@Context final HttpServletRequest request,
 			@Context final HttpServletResponse response
 	) throws Exception {
 		Map<String, Object> restresponse = new HashMap<String, Object>();
 		restresponse.put("success", true);
-		restresponse.put("message", "Tutor Record Updated");		
+		restresponse.put("message", "Record Updated "+completeUpdatedRecord);		
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 

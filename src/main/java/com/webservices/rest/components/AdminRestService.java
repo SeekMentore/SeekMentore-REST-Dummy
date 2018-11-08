@@ -132,13 +132,14 @@ public class AdminRestService extends AbstractRestWebservice implements RestMeth
 	@Consumes("application/x-www-form-urlencoded")
 	@POST
 	public String blacklistRegisteredTutors (
-			@FormParam("tutorIdsList") final String tutorIdsList,
+			@FormParam("allIdsList") final String allIdsList,
+			@FormParam("comments") final String comments,
 			@Context final HttpServletRequest request,
 			@Context final HttpServletResponse response
 	) throws Exception {
 		Map<String, Object> restresponse = new HashMap<String, Object>();
 		restresponse.put("success", true);
-		restresponse.put("message", "All Ids blacklisted");		
+		restresponse.put("message", "All Ids blacklisted "+allIdsList+" "+comments);		
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
@@ -225,13 +226,14 @@ public class AdminRestService extends AbstractRestWebservice implements RestMeth
 	@Consumes("application/x-www-form-urlencoded")
 	@POST
 	public String blacklistSubscribedCustomers (
-			@FormParam("cutomerIdsList") final String cutomerIdsList,
+			@FormParam("allIdsList") final String allIdsList,
+			@FormParam("comments") final String comments,
 			@Context final HttpServletRequest request,
 			@Context final HttpServletResponse response
 	) throws Exception {
 		Map<String, Object> restresponse = new HashMap<String, Object>();
 		restresponse.put("success", true);
-		restresponse.put("message", "All Ids blacklisted");		
+		restresponse.put("message", "All Ids blacklisted "+allIdsList+" "+comments);		
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 

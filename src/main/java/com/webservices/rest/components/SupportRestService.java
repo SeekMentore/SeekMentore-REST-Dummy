@@ -9,11 +9,13 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -240,6 +242,50 @@ public class SupportRestService extends AbstractRestWebservice implements RestMe
 		restresponse.put("totalRecords", data.size());
 		restresponse.put("success", true);
 		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/becomeTutorCheckDataAccess")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String becomeTutorCheckDataAccess (
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("formDataEditAccess", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/blacklistBecomeTutors")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String blacklistBecomeTutors (
+			@FormParam("allIdsList") final String allIdsList,
+			@FormParam("comments") final String comments,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Ids blacklisted "+allIdsList+" "+comments);		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/updateBecomeTutorRecord")
+	@Consumes({MediaType.MULTIPART_FORM_DATA})
+	@POST
+	public String updateBecomeTutorRecord (
+			@FormDataParam("completeUpdatedRecord") final String completeUpdatedRecord,
+			@FormDataParam("parentId") final String parentId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Record Updated "+completeUpdatedRecord);		
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 	
@@ -551,7 +597,51 @@ public class SupportRestService extends AbstractRestWebservice implements RestMe
 		restresponse.put("success", true);
 		restresponse.put("message", "");
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
-	}	
+	}
+	
+	@Path("/enquiryRequestCheckDataAccess")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String enquiryRequestCheckDataAccess (
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("formDataEditAccess", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/blacklistEnquiryRequests")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String blacklistenquiryRequests (
+			@FormParam("allIdsList") final String allIdsList,
+			@FormParam("comments") final String comments,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Ids blacklisted "+allIdsList+" "+comments);		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/updateEnquiryRequestRecord")
+	@Consumes({MediaType.MULTIPART_FORM_DATA})
+	@POST
+	public String updateenquiryRequestRecord (
+			@FormDataParam("completeUpdatedRecord") final String completeUpdatedRecord,
+			@FormDataParam("parentId") final String parentId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Record Updated "+completeUpdatedRecord);		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
 	
 	public class FindTutorTest {
 		
@@ -838,7 +928,51 @@ public class SupportRestService extends AbstractRestWebservice implements RestMe
 		restresponse.put("success", true);
 		restresponse.put("message", "");
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
-	}	
+	}
+	
+	@Path("/subscriptionRequestCheckDataAccess")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String subscriptionRequestCheckDataAccess (
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("formDataEditAccess", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/blacklistSubscriptionRequests")
+	@Consumes("application/x-www-form-urlencoded")
+	@POST
+	public String blacklistSubscriptionRequests (
+			@FormParam("allIdsList") final String allIdsList,
+			@FormParam("comments") final String comments,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "All Ids blacklisted "+allIdsList+" "+comments);		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/updateSubscriptionRequestRecord")
+	@Consumes({MediaType.MULTIPART_FORM_DATA})
+	@POST
+	public String updateSubscriptionRequestRecord (
+			@FormDataParam("completeUpdatedRecord") final String completeUpdatedRecord,
+			@FormDataParam("parentId") final String parentId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Record Updated "+completeUpdatedRecord);		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
 	
 	public class SubscribeWithUsTest {
 		
@@ -938,6 +1072,356 @@ public class SupportRestService extends AbstractRestWebservice implements RestMe
 			this.recordLastUpdated = new Date();
 			this.recordLastUpdatedMillis = new Date().getTime();
 			
+		}
+	}
+	
+	@Path("/nonContactedQueryList")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String nonContactedQueryList (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<SubmitQueryTest> data = new LinkedList<SubmitQueryTest>();
+		data.add(new SubmitQueryTest(1L));
+		data.add(new SubmitQueryTest(2L));
+		data.add(new SubmitQueryTest(3L));
+		data.add(new SubmitQueryTest(4L));
+		data.add(new SubmitQueryTest(5L));
+		data.add(new SubmitQueryTest(6L));
+		data.add(new SubmitQueryTest(7L));
+		data.add(new SubmitQueryTest(8L));
+		data.add(new SubmitQueryTest(9L));
+		data.add(new SubmitQueryTest(10L));		
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/nonAnsweredQueryList")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String nonAnsweredQueryList (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<SubmitQueryTest> data = new LinkedList<SubmitQueryTest>();
+		data.add(new SubmitQueryTest(1L));
+		data.add(new SubmitQueryTest(2L));
+		data.add(new SubmitQueryTest(3L));
+		data.add(new SubmitQueryTest(4L));
+		data.add(new SubmitQueryTest(5L));
+		data.add(new SubmitQueryTest(6L));
+		data.add(new SubmitQueryTest(7L));
+		data.add(new SubmitQueryTest(8L));
+		data.add(new SubmitQueryTest(9L));
+		data.add(new SubmitQueryTest(10L));		
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/answeredQueryList")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String answeredQueryList (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<SubmitQueryTest> data = new LinkedList<SubmitQueryTest>();
+		data.add(new SubmitQueryTest(1L));
+		data.add(new SubmitQueryTest(2L));
+		data.add(new SubmitQueryTest(3L));
+		data.add(new SubmitQueryTest(4L));
+		data.add(new SubmitQueryTest(5L));
+		data.add(new SubmitQueryTest(6L));
+		data.add(new SubmitQueryTest(7L));
+		data.add(new SubmitQueryTest(8L));
+		data.add(new SubmitQueryTest(9L));
+		data.add(new SubmitQueryTest(10L));		
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/submittedQueryCheckDataAccess")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String submittedQueryCheckDataAccess (
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("queryResponseCapableAccess", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/updateSubmittedQueryRecord")
+	@Consumes({MediaType.MULTIPART_FORM_DATA})
+	@POST
+	public String updateSubmittedQueryRecord (
+			@FormDataParam("completeUpdatedRecord") final String completeUpdatedRecord,
+			@FormDataParam("parentId") final String parentId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Record Updated "+completeUpdatedRecord);		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	public class SubmitQueryTest {
+		
+		Long queryId;
+		Date queryRequestedDate;
+		Long queryRequestedDateMillis;
+		String queryStatus;
+		String emailId;
+		String queryDetails;
+		String registeredTutor;
+		String subscribedCustomer;
+		String isContacted;
+		String whoContacted;
+		Date contactedDate;
+		Long contactedDateMillis;
+		String queryResponse;
+		String notAnswered;
+		String notAnsweredReason;
+		String whoNotAnswered;
+		Date recordLastUpdated;
+		Long recordLastUpdatedMillis;
+		
+		public SubmitQueryTest(Long queryId) {
+			this.queryId = queryId;
+			this.queryRequestedDate = new Date();
+			this.queryRequestedDateMillis = new Date().getTime();
+			this.queryStatus = "FRESH";
+			this.emailId = "abc@hg.com";
+			this.registeredTutor = "Y";
+			this.subscribedCustomer = "N";
+			this.queryDetails = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
+			this.isContacted = "N";
+			this.whoContacted = "abc";
+			this.contactedDate = new Date();
+			this.contactedDateMillis = new Date().getTime();
+			this.queryResponse = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
+			this.notAnswered = "Y";
+			this.notAnsweredReason = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
+			this.whoNotAnswered = "abc";
+			this.recordLastUpdated = new Date();
+			this.recordLastUpdatedMillis = new Date().getTime();
+		}
+	}
+	
+	@Path("/customerComplaintList")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String customerComplaintList (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<ComplaintTest> data = new LinkedList<ComplaintTest>();
+		data.add(new ComplaintTest(1L));
+		data.add(new ComplaintTest(2L));
+		data.add(new ComplaintTest(3L));
+		data.add(new ComplaintTest(4L));
+		data.add(new ComplaintTest(5L));
+		data.add(new ComplaintTest(6L));
+		data.add(new ComplaintTest(7L));
+		data.add(new ComplaintTest(8L));
+		data.add(new ComplaintTest(9L));
+		data.add(new ComplaintTest(10L));		
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/tutorComplaintList")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String tutorComplaintList (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<ComplaintTest> data = new LinkedList<ComplaintTest>();
+		data.add(new ComplaintTest(1L));
+		data.add(new ComplaintTest(2L));
+		data.add(new ComplaintTest(3L));
+		data.add(new ComplaintTest(4L));
+		data.add(new ComplaintTest(5L));
+		data.add(new ComplaintTest(6L));
+		data.add(new ComplaintTest(7L));
+		data.add(new ComplaintTest(8L));
+		data.add(new ComplaintTest(9L));
+		data.add(new ComplaintTest(10L));		
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/employeeComplaintList")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String employeeComplaintList (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<ComplaintTest> data = new LinkedList<ComplaintTest>();
+		data.add(new ComplaintTest(1L));
+		data.add(new ComplaintTest(2L));
+		data.add(new ComplaintTest(3L));
+		data.add(new ComplaintTest(4L));
+		data.add(new ComplaintTest(5L));
+		data.add(new ComplaintTest(6L));
+		data.add(new ComplaintTest(7L));
+		data.add(new ComplaintTest(8L));
+		data.add(new ComplaintTest(9L));
+		data.add(new ComplaintTest(10L));		
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/resolvedComplaintList")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String resolvedComplaintList (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<ComplaintTest> data = new LinkedList<ComplaintTest>();
+		data.add(new ComplaintTest(1L));
+		data.add(new ComplaintTest(2L));
+		data.add(new ComplaintTest(3L));
+		data.add(new ComplaintTest(4L));
+		data.add(new ComplaintTest(5L));
+		data.add(new ComplaintTest(6L));
+		data.add(new ComplaintTest(7L));
+		data.add(new ComplaintTest(8L));
+		data.add(new ComplaintTest(9L));
+		data.add(new ComplaintTest(10L));		
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/complaintCheckDataAccess")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String complaintCheckDataAccess (
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("complaintAddressCapableAccess", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/updateComplaintRecord")
+	@Consumes({MediaType.MULTIPART_FORM_DATA})
+	@POST
+	public String updateComplaintRecord (
+			@FormDataParam("completeUpdatedRecord") final String completeUpdatedRecord,
+			@FormDataParam("parentId") final String parentId,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("message", "Record Updated "+completeUpdatedRecord);		
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	public class ComplaintTest {
+		
+		Long complaintId;
+		String name;
+		Date complaintFiledDate;
+		Long complaintFiledDateMillis;
+		String complaintStatus;
+		String userId;
+		String complaintDetails;
+		String complaintUser;
+		String complaintResponse;
+		String isContacted;
+		String whoContacted;
+		Date contactedDate;
+		Long contactedDateMillis;
+		String notResolved;
+		String notResolvedReason;
+		String whoNotResolved;
+		Date recordLastUpdated;
+		Long recordLastUpdatedMillis;
+		
+		public ComplaintTest(Long complaintId) {
+			this.complaintId = complaintId;
+			this.complaintFiledDate = new Date();
+			this.complaintFiledDateMillis = new Date().getTime();
+			this.complaintStatus = "FRESH";
+			this.userId = "abc@hg.com";
+			this.complaintUser = complaintId%3==1?"E":complaintId%3==2?"T":"C";
+			this.complaintDetails = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
+			this.isContacted = "N";
+			this.whoContacted = "abc";
+			this.contactedDate = new Date();
+			this.contactedDateMillis = new Date().getTime();
+			this.complaintResponse = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
+			this.notResolved = "Y";
+			this.notResolvedReason = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
+					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
+			this.whoNotResolved = "abc";
+			this.recordLastUpdated = new Date();
+			this.recordLastUpdatedMillis = new Date().getTime();
 		}
 	}
 

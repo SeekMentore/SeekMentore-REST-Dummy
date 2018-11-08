@@ -21,6 +21,7 @@ import com.model.ErrorPacket;
 import com.service.JNDIandControlConfigurationLoadService;
 import com.service.MenuService;
 import com.service.components.CommonsService;
+import com.utils.LoggerUtils;
 import com.utils.WebServiceUtils;
 import com.utils.context.AppContext;
 import com.webservices.rest.AbstractWebservice;
@@ -52,6 +53,7 @@ public class PageAvailableFilter extends AbstractWebservice implements Filter, F
 			}
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 			final String pageURL = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
+			LoggerUtils.logOnConsole(pageURL);
 			if (menuService.pageExists(pageURL)) {
 				chain.doFilter(request, response);
 			} else {

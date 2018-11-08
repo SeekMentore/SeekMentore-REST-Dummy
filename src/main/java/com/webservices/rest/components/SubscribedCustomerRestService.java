@@ -9,12 +9,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
+import org.glassfish.jersey.media.multipart.FormDataParam;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -106,16 +106,17 @@ public class SubscribedCustomerRestService extends AbstractRestWebservice implem
 	}
 	
 	@Path("/updateCustomerRecord")
-	@Consumes("application/x-www-form-urlencoded")
+	@Consumes({MediaType.MULTIPART_FORM_DATA})
 	@POST
 	public String updateCustomerRecord (
-			@FormParam("completeCustomerRecord") final String completeCustomerRecord,
+			@FormDataParam("completeUpdatedRecord") final String completeUpdatedRecord,
+			@FormDataParam("parentId") final String parentId,
 			@Context final HttpServletRequest request,
 			@Context final HttpServletResponse response
 	) throws Exception {
 		Map<String, Object> restresponse = new HashMap<String, Object>();
 		restresponse.put("success", true);
-		restresponse.put("message", "Tutor Record Updated");		
+		restresponse.put("message", "Record Updated "+completeUpdatedRecord);		
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}
 
