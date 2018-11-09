@@ -79,6 +79,7 @@ public class CommonsRestService extends AbstractRestWebservice implements RestMe
 		Map<String, Object> restresponse = new HashMap<String, Object>();
 		restresponse.put("username", "Shantanu Mukherjee");
 		List<MenuItem> menu = new LinkedList<MenuItem>(); 
+		MenuItem home = new MenuItem("Home", true, "/user/home");
 		MenuItem admin = new MenuItem("Admin", true, null);
 		admin.addSubMenu("Registered Tutor", "/user/employee/admin/registeredtutor");
 		admin.addSubMenu("Subscribed Customer", "/user/employee/admin/subscribedcustomer");
@@ -86,6 +87,7 @@ public class CommonsRestService extends AbstractRestWebservice implements RestMe
 		MenuItem sales = new MenuItem("Sales", true, null);
 		sales.addSubMenu("All Enquiries", "/user/employee/sales/allenquiries");
 		sales.addSubMenu("Map Tutor to Enquiry", "/user/employee/sales/maptutortoenquiry");
+		sales.addSubMenu("Schedule Demo", "/user/employee/sales/scheduleDemo");
 		sales.addSubMenu("Demo Tracker", "/user/employee/sales/demotracker");
 		sales.addSubMenu("Packages", "/user/employee/sales/subscriptionpackages");
 		MenuItem support = new MenuItem("Support", true, null);
@@ -97,6 +99,7 @@ public class CommonsRestService extends AbstractRestWebservice implements RestMe
 		MenuItem marketing = new MenuItem("Marketing", false, null);
 		MenuItem hr = new MenuItem("HR", false, null);
 		MenuItem accounts = new MenuItem("Accounts", false, null);
+		menu.add(home);
 		menu.add(admin);
 		menu.add(sales);
 		menu.add(support);

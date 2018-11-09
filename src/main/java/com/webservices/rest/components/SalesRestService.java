@@ -185,7 +185,7 @@ public class SalesRestService extends AbstractRestWebservice implements RestMeth
 			this.tutorEmail = "abc@gm.com";
 			this.tutorContactNumber = "986542365899";
 			this.adminRemarks = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
-			this.locationDetails = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
+			this.locationDetails = "01";
 			this.addressDetails = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
 			this.additionalDetails = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test";
 			this.whoActed = "absd";
@@ -193,10 +193,10 @@ public class SalesRestService extends AbstractRestWebservice implements RestMeth
 		}
 	}
 	
-	@Path("/currentCustomerAllPendingEnquiries")
+	@Path("/currentCustomerAllPendingEnquiriesList")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@POST
-	public String currentCustomerAllPendingEnquiries (
+	public String currentCustomerAllPendingEnquiriesList (
 			final GridComponent gridComponent,
 			@Context final HttpServletRequest request,
 			@Context final HttpServletResponse response
@@ -216,6 +216,47 @@ public class SalesRestService extends AbstractRestWebservice implements RestMeth
 		restresponse.put("data", data);
 		restresponse.put("totalRecords", data.size());
 		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/toBeMappedEnquiriesGridList")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String toBeMappedEnquiriesGridList (
+			final GridComponent gridComponent,
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		List<EnquiriesTest> data = new LinkedList<EnquiriesTest>();
+		data.add(new EnquiriesTest(1L));
+		data.add(new EnquiriesTest(2L));
+		data.add(new EnquiriesTest(3L));
+		data.add(new EnquiriesTest(4L));
+		data.add(new EnquiriesTest(5L));
+		data.add(new EnquiriesTest(6L));
+		data.add(new EnquiriesTest(7L));
+		data.add(new EnquiriesTest(8L));
+		data.add(new EnquiriesTest(9L));
+		data.add(new EnquiriesTest(10L));		
+		restresponse.put("data", data);
+		restresponse.put("totalRecords", data.size());
+		restresponse.put("success", true);
+		restresponse.put("message", "");
+		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
+	}
+	
+	@Path("/mapTutorToEnquiryCheckDataAccess")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@POST
+	public String mapTutorToEnquiryCheckDataAccess (
+			@Context final HttpServletRequest request,
+			@Context final HttpServletResponse response
+	) throws Exception {
+		Map<String, Object> restresponse = new HashMap<String, Object>();
+		restresponse.put("success", true);
+		restresponse.put("enquiryMappingAccess", true);
 		restresponse.put("message", "");
 		return convertObjToJSONString(restresponse, REST_MESSAGE_JSON_RESPONSE_NAME);
 	}

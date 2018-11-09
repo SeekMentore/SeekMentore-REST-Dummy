@@ -1397,11 +1397,12 @@ public class SupportRestService extends AbstractRestWebservice implements RestMe
 		
 		public ComplaintTest(Long complaintId) {
 			this.complaintId = complaintId;
+			this.name = "Shantanu Mukherjee";
 			this.complaintFiledDate = new Date();
 			this.complaintFiledDateMillis = new Date().getTime();
 			this.complaintStatus = "FRESH";
 			this.userId = "abc@hg.com";
-			this.complaintUser = complaintId%3==1?"E":complaintId%3==2?"T":"C";
+			this.complaintUser = complaintId%3==1?"01":complaintId%3==2?"02":"03";
 			this.complaintDetails = "Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
 					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
 					+ "Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test "
