@@ -12,19 +12,27 @@ public class Filter implements Serializable {
 	private String type;
 	private String mapping;
 	private String columnId;
-	private int lessThan;
-	private int equalTo;
-	private int greaterThan;
+	private Integer lessThan;
+	private Integer equalTo;
+	private Integer greaterThan;
 	private String stringValue;
+	private Boolean textCaseSensitiveSearch;
 	private Date beforeDate;
 	private Date onDate;
 	private Date afterDate;
-	private long beforeDateMillis;
-	private long onDateMillis;
-	private long afterDateMillis;
+	private Long beforeDateMillis;
+	private Long onDateMillis;
+	private Long afterDateMillis;
 	private List<String> listValue;
 
 	public Filter() {}
+	
+	public Filter(String id, String type, String mapping, String columnId) {
+		this.id = id;
+		this.type = type;
+		this.mapping = mapping;
+		this.columnId = columnId;
+	}
 
 	public String getId() {
 		return id;
@@ -58,27 +66,27 @@ public class Filter implements Serializable {
 		this.columnId = columnId;
 	}
 
-	public int getLessThan() {
+	public Integer getLessThan() {
 		return lessThan;
 	}
 
-	public void setLessThan(int lessThan) {
+	public void setLessThan(Integer lessThan) {
 		this.lessThan = lessThan;
 	}
 
-	public int getEqualTo() {
+	public Integer getEqualTo() {
 		return equalTo;
 	}
 
-	public void setEqualTo(int equalTo) {
+	public void setEqualTo(Integer equalTo) {
 		this.equalTo = equalTo;
 	}
 
-	public int getGreaterThan() {
+	public Integer getGreaterThan() {
 		return greaterThan;
 	}
 
-	public void setGreaterThan(int greaterThan) {
+	public void setGreaterThan(Integer greaterThan) {
 		this.greaterThan = greaterThan;
 	}
 
@@ -114,27 +122,27 @@ public class Filter implements Serializable {
 		this.afterDate = afterDate;
 	}
 
-	public long getBeforeDateMillis() {
+	public Long getBeforeDateMillis() {
 		return beforeDateMillis;
 	}
 
-	public void setBeforeDateMillis(long beforeDateMillis) {
+	public void setBeforeDateMillis(Long beforeDateMillis) {
 		this.beforeDateMillis = beforeDateMillis;
 	}
 
-	public long getOnDateMillis() {
+	public Long getOnDateMillis() {
 		return onDateMillis;
 	}
 
-	public void setOnDateMillis(long onDateMillis) {
+	public void setOnDateMillis(Long onDateMillis) {
 		this.onDateMillis = onDateMillis;
 	}
 
-	public long getAfterDateMillis() {
+	public Long getAfterDateMillis() {
 		return afterDateMillis;
 	}
 
-	public void setAfterDateMillis(long afterDateMillis) {
+	public void setAfterDateMillis(Long afterDateMillis) {
 		this.afterDateMillis = afterDateMillis;
 	}
 
@@ -144,5 +152,43 @@ public class Filter implements Serializable {
 
 	public void setListValue(List<String> listValue) {
 		this.listValue = listValue;
+	}
+	
+	public void addListValue(String value) {
+		this.listValue.add(value);
+	}
+
+	public Boolean getTextCaseSensitiveSearch() {
+		return textCaseSensitiveSearch;
+	}
+
+	public void setTextCaseSensitiveSearch(Boolean textCaseSensitiveSearch) {
+		this.textCaseSensitiveSearch = textCaseSensitiveSearch;
+	}
+	
+	@Override
+	public String toString() {
+		String output = this.id + " " + this.type + " " + this.mapping + " " + this.columnId;
+		switch (type) {
+			case "string" : {
+				output += " " + this.stringValue + " " + this.textCaseSensitiveSearch;
+				break;
+			}
+			case "date" : {
+				output += " " + this.beforeDateMillis + " " + this.beforeDate + " " + this.onDateMillis + " " + this.onDate + " " + this.afterDateMillis + " " + this.afterDate;
+				break;
+			}
+			case "number" : {
+				output += " " + this.lessThan + " " + this.equalTo + " " + this.greaterThan;
+				break;
+			}
+			case "list" : {
+				for (String value : this.listValue) {
+					output += " " + value;
+				}
+				break;
+			}
+		}
+		return  output;
 	}
 }

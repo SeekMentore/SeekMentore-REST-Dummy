@@ -117,6 +117,27 @@
 			<webservice id="updatePendingEnquiryRecord" url="/updatePendingEnquiryRecord"></webservice>
 			<webservice id="toBeMappedEnquiriesGridList" url="/toBeMappedEnquiriesGridList"></webservice>
 			<webservice id="mapTutorToEnquiryCheckDataAccess" url="/mapTutorToEnquiryCheckDataAccess"></webservice>
+			<webservice id="allMappingEligibleTutorsList" url="/allMappingEligibleTutorsList"></webservice>
+			<webservice id="mapRegisteredTutors" url="/mapRegisteredTutors"></webservice>
+			<webservice id="mapRegisteredTutor" url="/mapRegisteredTutor"></webservice>
+			<webservice id="allMappedTutorsList" url="/allMappedTutorsList"></webservice>
+			<webservice id="unmapRegisteredTutors" url="/unmapRegisteredTutors"></webservice>
+			<webservice id="unmapRegisteredTutor" url="/unmapRegisteredTutor"></webservice>
+			<webservice id="updateTutorMapperRecord" url="/updateTutorMapperRecord"></webservice>
+			<webservice id="mappedTutorCheckDataAccess" url="/mappedTutorCheckDataAccess"></webservice>
+			<webservice id="allDemoReadyMappedTutorsList" url="/allDemoReadyMappedTutorsList"></webservice>
+			<webservice id="mappedTutorCheckScheduleDemoAccess" url="/mappedTutorCheckScheduleDemoAccess"></webservice>
+			<webservice id="currentTutorAllMappingList" url="/currentTutorAllMappingList"></webservice>
+			<webservice id="currentTutorAllScheduledDemoList" url="/currentTutorAllScheduledDemoList"></webservice>
+			<webservice id="updateScheduleDemoMappedTutorRecord" url="/updateScheduleDemoMappedTutorRecord"></webservice>
+			<webservice id="scheduledDemoList" url="/scheduledDemoList"></webservice>
+			<webservice id="reScheduledDemoList" url="/reScheduledDemoList"></webservice>
+			<webservice id="successfulDemoList" url="/successfulDemoList"></webservice>
+			<webservice id="failedDemoList" url="/failedDemoList"></webservice>
+			<webservice id="cancelledDemoGridList" url="/cancelledDemoGridList"></webservice>
+			<webservice id="demoTrackerModifyCheckDataAccess" url="/demoTrackerModifyCheckDataAccess"></webservice>
+			<webservice id="cancelDemos" url="/cancelDemos"></webservice>
+			<webservice id="updateDemoTrackerRecord" url="/updateDemoTrackerRecord"></webservice>
 		</page>
 		<page id="error" url="/error.html"></page>
 	</pageList>

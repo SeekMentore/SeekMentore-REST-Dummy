@@ -19,6 +19,7 @@ import com.constants.LoginConstants;
 import com.constants.RestMethodConstants;
 import com.constants.RestPathConstants;
 import com.constants.ScopeConstants;
+import com.utils.LoggerUtils;
 import com.webservices.rest.AbstractRestWebservice;
 
 @Component
@@ -90,6 +91,7 @@ public class LoginRestService extends AbstractRestWebservice implements RestMeth
 			@Context final HttpServletResponse response
 	) throws Exception {
 		Map<String, Object> restresponse = new HashMap<String, Object>();
+		LoggerUtils.logOnConsole("This is the URL path queried "+urlPath);
 		if(!("seek".equals(urlPath))) {
 			restresponse.put("success", true);
 		} else {

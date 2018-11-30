@@ -87,7 +87,7 @@ public class CommonsRestService extends AbstractRestWebservice implements RestMe
 		MenuItem sales = new MenuItem("Sales", true, null);
 		sales.addSubMenu("All Enquiries", "/user/employee/sales/allenquiries");
 		sales.addSubMenu("Map Tutor to Enquiry", "/user/employee/sales/maptutortoenquiry");
-		sales.addSubMenu("Schedule Demo", "/user/employee/sales/scheduleDemo");
+		sales.addSubMenu("Schedule Demo", "/user/employee/sales/scheduledemo");
 		sales.addSubMenu("Demo Tracker", "/user/employee/sales/demotracker");
 		sales.addSubMenu("Packages", "/user/employee/sales/subscriptionpackages");
 		MenuItem support = new MenuItem("Support", true, null);

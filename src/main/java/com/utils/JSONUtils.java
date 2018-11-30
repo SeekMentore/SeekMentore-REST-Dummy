@@ -50,6 +50,8 @@ public class JSONUtils implements JSONConstants {
 				return type.cast(0);
 			} else if (valueType.equals(JsonValue.ValueType.ARRAY)) {
 				return type.cast(jsonObject.getJsonArray((String)property));
+			} else if (valueType.equals(JsonValue.ValueType.TRUE) || valueType.equals(JsonValue.ValueType.FALSE)) {
+				return type.cast(jsonObject.getBoolean((String)property));
 			}
 			return null;
 		} catch (Exception e) {
